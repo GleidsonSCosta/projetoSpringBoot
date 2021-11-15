@@ -1,10 +1,14 @@
 package com.example.vendas.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity	
@@ -17,7 +21,10 @@ public class Cliente {
 	private Integer id;
 	
 	@Column (name = "nome", length = 100)
-	private String nome;
+	private String nome;	
+	
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+	private Set<Pedido> pedidos;
 
 	public Cliente() {
 		
@@ -26,6 +33,7 @@ public class Cliente {
 	public Cliente(String nome) {
 		this.nome = nome;
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -43,14 +51,17 @@ public class Cliente {
 		this.nome = nome;
 	}
 
+	public Set<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(Set<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nome=" + nome + "]";
 	}
-	
-	
-	
-
-	
 	
 }	
