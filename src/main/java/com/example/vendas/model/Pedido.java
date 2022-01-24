@@ -66,7 +66,7 @@ public class Pedido {
 	}
 	@Override
 	public String toString() {
-		return "Pedido [id=" + id + ", datapedido=" + datapedido + ", total=" + total + "]";
+		return "Pedido (id=" + id + ", data pedido=" + datapedido + ", total=" + total + ")";
 	}
 
 }
