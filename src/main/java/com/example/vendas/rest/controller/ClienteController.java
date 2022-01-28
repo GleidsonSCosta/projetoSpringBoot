@@ -1,4 +1,4 @@
-package com.example.vendas.controller;
+package com.example.vendas.rest.controller;
 
 import java.util.List;
 

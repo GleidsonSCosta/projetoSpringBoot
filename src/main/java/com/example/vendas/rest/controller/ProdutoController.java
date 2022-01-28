@@ -1,4 +1,4 @@
-package com.example.vendas.controller;
+package com.example.vendas.rest.controller;
 
 //elimata a necessidade de usar HttpStatus várias vezes
 import static org.springframework.http.HttpStatus.CREATED;

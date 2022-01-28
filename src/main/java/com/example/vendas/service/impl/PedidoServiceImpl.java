@@ -2,11 +2,14 @@ package com.example.vendas.service.impl;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.vendas.enumerado.StatusPedido;
+import com.example.vendas.exception.PedidoNaoEncontradoException;
 import com.example.vendas.exception.RegraNegocioException;
 import com.example.vendas.model.Cliente;
 import com.example.vendas.model.ItemPedido;
@@ -45,6 +48,7 @@ public class PedidoServiceImpl implements PedidoService {
 		pedido.setTotal(dto.getTotal());
 		pedido.setDatapedido(LocalDate.now());
 		pedido.setCliente(cliente);
+		pedido.setStatus(StatusPedido.REALIZADO);
 		
 		List<ItemPedido> itensPedido = converteItens(pedido, dto.getItens());
 		repository.save(pedido);
@@ -72,8 +76,25 @@ public class PedidoServiceImpl implements PedidoService {
 			itemPedido.setQuantidade(dto.getQuantidade());
 			itemPedido.setPedido(pedido);
 			itemPedido.setProduto(produto);
+			
 			return itemPedido;
 		}).collect(Collectors.toList());
+	}
+
+	@Override
+	public Optional<Pedido> obterPedidoCompleto(Integer id) {
+		
+		return repository.findByIdFetchItens(id);
+	}
+
+	@Override
+	@Transactional
+	public void atualizaStatusPedido(Integer id, StatusPedido statusPedido) {
+		repository.findById(id).map(pedido -> {
+			pedido.setStatus(statusPedido);
+			return repository.save(pedido);
+		}).orElseThrow(() -> new PedidoNaoEncontradoException());
+		
 	} 
 	
 	
