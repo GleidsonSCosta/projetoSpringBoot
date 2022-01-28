@@ -1,11 +1,14 @@
 package com.example.vendas.rest.controller;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
@@ -40,7 +43,7 @@ public class PedidoController {
 	
 	@PostMapping
 	@ResponseStatus(CREATED)
-	public Integer save(@RequestBody PedidoDTO dto) {
+	public Integer save(@RequestBody @Valid PedidoDTO dto) {
 		Pedido pedido = service.salvar(dto);
 		return pedido.getId();
 	}
