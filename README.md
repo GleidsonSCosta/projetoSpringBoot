@@ -1,6 +1,4 @@
 # projetoSpringBoot
-Nesse projeto aprendi a iniciar um projeto Spring Boot
+Desenvolvimento de API RESTful
 
-Apliquei o conceito de trabalhar com perfis.
-Criação de novos arquivos properties
-conceitos de injeção de dependências
+A aplicação é uma proposta do cuso de Spring Boot realizado na Udemy.
