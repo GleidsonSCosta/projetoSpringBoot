@@ -36,11 +36,12 @@ public class UsuariosController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuarios salvar(@RequestBody @Valid Usuarios usuario) {
+	public Usuarios salvar (@RequestBody @Valid Usuarios usuario) {
 		String senhaCripto = passwordEncoder.encode(usuario.getSenha());
 		usuario.setSenha(senhaCripto);
 		return usuarioService.salvar(usuario);
 	}
+
 
 	@PostMapping("/auth")
 	public TokenDTO autenticar(@RequestBody CredencialDTO credenciais) {

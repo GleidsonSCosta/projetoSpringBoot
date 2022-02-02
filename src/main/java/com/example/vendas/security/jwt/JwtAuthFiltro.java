@@ -32,7 +32,7 @@ public class JwtAuthFiltro extends OncePerRequestFilter {
 		//captura o requizição
 		String authorization = request.getHeader("Authorization");
 		
-		if(authorization != null && authorization.startsWith("Bearer")){
+		if( authorization != null && authorization.startsWith("Bearer")){
 			String token = authorization.split(" ")[1];
 			boolean isValid= jwtService.tokenValido(token);
 			
@@ -48,11 +48,44 @@ public class JwtAuthFiltro extends OncePerRequestFilter {
 				user.setDetails( new WebAuthenticationDetailsSource().buildDetails(request));
 				
 				SecurityContextHolder.getContext().setAuthentication(user);
-			}
-			
-			filterChain.doFilter(request, response);
+			}	
 		}
-		
+		filterChain.doFilter(request, response);
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

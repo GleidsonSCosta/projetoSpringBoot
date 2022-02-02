@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	// Registrando o filtro jwt
+	@Bean
 	public OncePerRequestFilter jwtFilter() {
 		return new JwtAuthFiltro(jwtService, usuarioService);
 	}
@@ -71,7 +72,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.permitAll()
 				.anyRequest().authenticated()// caso esqueça de autenticar
 			.and()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
 				.addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
 		
