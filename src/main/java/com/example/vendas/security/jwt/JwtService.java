@@ -1,4 +1,4 @@
-package com.example.vendas;
+package com.example.vendas.security.jwt;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
+import com.example.vendas.VendasApplication;
 import com.example.vendas.model.Usuarios;
 
 import io.jsonwebtoken.Claims;
