@@ -82,19 +82,6 @@ public class JwtService {
 //		System.err.println(service.obterLoginUsuario(token));
 //	}
 
-//	public static void main(String[] args) {
-//		ConfigurableApplicationContext contexto = SpringApplication.run(VendasApplication.class);
-//		JwtService service = contexto.getBean(JwtService.class);
-//		Usuarios usuario = Usuarios.builder().login("gleidson").build();
-//		String token = service.gerarToken(usuario);
-//		System.out.println(token);
-//		
-//		boolean isTokenValido = service.tokenValido(token);
-//		System.err.println("O teken é válido? " + isTokenValido);
-//		
-//		System.err.println(service.obterLoginUsuario(token));
-//	}
-
 	
 }
 
