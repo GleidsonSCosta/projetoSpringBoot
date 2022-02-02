@@ -30,9 +30,6 @@ public class UsuariosController {
 	private final UsuarioServiceImpl usuarioService;
 	private final PasswordEncoder passwordEncoder;
 	private final JwtService jwtService;
-	
-
-//  Método para salvar o usuário, também faz a criptografia da senha
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
@@ -41,7 +38,6 @@ public class UsuariosController {
 		usuario.setSenha(senhaCripto);
 		return usuarioService.salvar(usuario);
 	}
-
 
 	@PostMapping("/auth")
 	public TokenDTO autenticar(@RequestBody CredencialDTO credenciais) {

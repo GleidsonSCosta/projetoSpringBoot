@@ -8,9 +8,9 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Retention(RetentionPolicy.RUNTIME)// é verificada em tempo de execução
-@Target(ElementType.FIELD) // diz que a anotação é colocada sobre um campo
-@Constraint( validatedBy = { NotEmptylistValidator.class } ) //diz que é uma annotation de validação
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD) 
+@Constraint( validatedBy = { NotEmptylistValidator.class } ) 
 public @interface NotEmptyList {
 
 	String message() default "A lista não pode se vazia";

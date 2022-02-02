@@ -29,7 +29,6 @@ public class ApplicationControllerAdvace {
 		return new ApiErrors(ex.getMessage());
 	}
 	
-	//método usado caso seja passado campo inválido, vazio ou null 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ApiErrors handleMethodNotValidexception(MethodArgumentNotValidException ex) {

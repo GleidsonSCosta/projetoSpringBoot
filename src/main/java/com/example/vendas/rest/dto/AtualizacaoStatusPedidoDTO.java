@@ -6,4 +6,5 @@ import lombok.Data;
 public class AtualizacaoStatusPedidoDTO {
 
 	private String novoStatus;
+	
 }

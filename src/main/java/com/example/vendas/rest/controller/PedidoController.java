@@ -70,7 +70,7 @@ public class PedidoController {
 			.cpf(pedido.getCliente().getCpf())
 			.nomeCliente(pedido.getCliente().getNome())
 			.total(pedido.getTotal())
-			.status(pedido.getStatus().name())//pega o conteúdo de ENUM
+			.status(pedido.getStatus().name())
 			.itens(converter(pedido.getItens()))
 			.build();
 			

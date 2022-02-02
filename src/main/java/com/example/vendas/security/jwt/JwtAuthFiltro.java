@@ -19,7 +19,7 @@ public class JwtAuthFiltro extends OncePerRequestFilter {
 
 	private JwtService jwtService;
 	private UsuarioServiceImpl usuarioService;
-	
+
 	public JwtAuthFiltro(JwtService jwtService, UsuarioServiceImpl usuarioService) {
 		this.jwtService = jwtService;
 		this.usuarioService = usuarioService;
@@ -28,64 +28,27 @@ public class JwtAuthFiltro extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		
-		//captura o requizição
+
 		String authorization = request.getHeader("Authorization");
-		
-		if( authorization != null && authorization.startsWith("Bearer")){
+
+		if (authorization != null && authorization.startsWith("Bearer")) {
 			String token = authorization.split(" ")[1];
-			boolean isValid= jwtService.tokenValido(token);
-			
-			if(isValid) {
+			boolean isValid = jwtService.tokenValido(token);
+
+			if (isValid) {
 				String loginUsuario = jwtService.obterLoginUsuario(token);
 
 				UserDetails usuario = usuarioService.loadUserByUsername(loginUsuario);
-				
-				UsernamePasswordAuthenticationToken user = new 
-						UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
-				
-				//isso diz para o Spring Security que setrata de uma autenticação web
-				user.setDetails( new WebAuthenticationDetailsSource().buildDetails(request));
-				
+
+				UsernamePasswordAuthenticationToken user = new UsernamePasswordAuthenticationToken(usuario, null,
+						usuario.getAuthorities());
+
+				user.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
 				SecurityContextHolder.getContext().setAuthentication(user);
-			}	
+			}
 		}
 		filterChain.doFilter(request, response);
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

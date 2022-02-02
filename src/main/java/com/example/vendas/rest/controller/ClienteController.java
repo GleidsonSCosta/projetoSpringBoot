@@ -39,12 +39,6 @@ public class ClienteController {
 		return clientesRepository.save(cliente);	
 	}
 
-//	@PostMapping
-//	public ResponseEntity<Cliente> save(@RequestBody @Valid  Cliente cliente) {
-//		Cliente clienteSalvo = clientesRepository.save(cliente);
-//		return ResponseEntity.ok(clienteSalvo);
-//	}
-
 	@GetMapping("{id}")
 	public Cliente getClienteId(@PathVariable Integer id) {
 		return clientesRepository
@@ -61,9 +55,6 @@ public class ClienteController {
 				return Void.TYPE;
 				})
 			.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não encontrado"));
-		
-
-		
 	}
 
 	@PutMapping("{id}")
@@ -77,10 +68,6 @@ public class ClienteController {
 			return clienteExistente;
 			}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Clinete não encontrado."));
 	}
-	
-	
-	//método usa os dados passos no front como filtro e retorna uma lista dos clientes
-	
 	
 	@GetMapping
 	public List<Cliente> find(Cliente filtro) {

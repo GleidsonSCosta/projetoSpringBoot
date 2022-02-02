@@ -16,8 +16,6 @@ import com.example.vendas.repository.UsuariosRepository;
 @Service
 public class UsuarioServiceImpl implements UserDetailsService {
 	
-	//Classe usada para carregar usuário da base de dados
-	
 	@Autowired 
 	private PasswordEncoder encoder;
 	
@@ -29,7 +27,6 @@ public class UsuarioServiceImpl implements UserDetailsService {
 		return repository.save(usuario);
 	}
 	
-	// método para fazer a comparação da senha vinda do DTO com a que foi passada
 	public UserDetails autenticar(Usuarios usuario) {
 		UserDetails user = loadUserByUsername(usuario.getLogin());
 		boolean senhaCorreta = encoder.matches(usuario.getSenha(), user.getPassword());
@@ -54,23 +51,6 @@ public class UsuarioServiceImpl implements UserDetailsService {
 				.password(usuario.getSenha())
 				.roles(roles)
 				.build();
-		
-		
-		
-		
-//		 simulando usuário vindo do banco		
-		
-//		if (!username.equals("Maria")) {
-//			throw new UsernameNotFoundException("Usuário não encontrado na base de dados.");
-//		}
-//		
-
-//		return User
-//				.builder()
-//				.username("Maria")
-//				.password(encoder.encode("321"))
-//				.roles("USER", "ADMIN")
-//				.build();
 	}
 
 
