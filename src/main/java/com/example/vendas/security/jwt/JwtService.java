@@ -68,8 +68,7 @@ public class JwtService {
 	public String obterLoginUsuario (String token) throws ExpiredJwtException {
 		return (String) obterClaims(token).getSubject();
 	}
-	
-<<<<<<< HEAD
+
 //	public static void main(String[] args) {
 //		ConfigurableApplicationContext contexto = SpringApplication.run(VendasApplication.class);
 //		JwtService service = contexto.getBean(JwtService.class);
@@ -82,7 +81,7 @@ public class JwtService {
 //		
 //		System.err.println(service.obterLoginUsuario(token));
 //	}
-=======
+
 	public static void main(String[] args) {
 		ConfigurableApplicationContext contexto = SpringApplication.run(VendasApplication.class);
 		JwtService service = contexto.getBean(JwtService.class);
@@ -95,7 +94,7 @@ public class JwtService {
 		
 		System.err.println(service.obterLoginUsuario(token));
 	}
->>>>>>> a1d14ded3e119c56e2a1af3bac0097986d91f495
+
 	
 }
 

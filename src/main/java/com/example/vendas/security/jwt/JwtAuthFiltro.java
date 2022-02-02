@@ -38,12 +38,7 @@ public class JwtAuthFiltro extends OncePerRequestFilter {
 			
 			if(isValid) {
 				String loginUsuario = jwtService.obterLoginUsuario(token);
-				
-<<<<<<< HEAD
-				// carrega o usuário com sua role e authorities	
-=======
-				// carrega o usuário com sua role e autorids
->>>>>>> a1d14ded3e119c56e2a1af3bac0097986d91f495
+
 				UserDetails usuario = usuarioService.loadUserByUsername(loginUsuario);
 				
 				UsernamePasswordAuthenticationToken user = new 
