@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.vendas.exception.SenhaInvalidaException;
 import com.example.vendas.model.Usuarios;
 import com.example.vendas.repository.UsuariosRepository;
 
@@ -26,6 +27,18 @@ public class UsuarioServiceImpl implements UserDetailsService {
 	@Transactional
 	public Usuarios salvar(Usuarios usuario) {
 		return repository.save(usuario);
+	}
+	
+	// método para fazer a comparação da senha vinda do DTO com a que foi passada
+	public UserDetails autenticar(Usuarios usuario) {
+		UserDetails user = loadUserByUsername(usuario.getLogin());
+		boolean senhaCorreta = encoder.matches(usuario.getSenha(), user.getPassword());
+		
+		if(senhaCorreta) {
+			return user;
+		}
+		
+		throw new SenhaInvalidaException();
 	}
 	
 	@Override
