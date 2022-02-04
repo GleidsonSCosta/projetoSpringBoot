@@ -1,4 +1,4 @@
-package com.example.vendas.rest.controller;
+package com.example.vendas.rest;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.example.vendas.exception.PedidoNaoEncontradoException;
 import com.example.vendas.exception.RegraNegocioException;
-import com.example.vendas.rest.ApiErrors;
 
 @RestControllerAdvice
 public class ApplicationControllerAdvace {

@@ -1,3 +1,4 @@
+
 package com.example.vendas.exception;
 
 public class RegraNegocioException extends RuntimeException {
